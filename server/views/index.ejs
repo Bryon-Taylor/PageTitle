@@ -6,6 +6,17 @@
     <link rel="stylesheet" href="css/styles.css"
   </head>
   <body>
-    <h1 class="red">index.ejs file <%= variable %></h1>
+    <h1 class="red">index.ejs file</h1>
+    <form action="/" method="post">
+      <label for="inputUrl">Input a URL to view the website's title</label><br />
+      <input type="text" id="inputUrl" name="inputUrl" /><br />
+      <button type="submit">Submit URL</button>
+    </form>
+    <div>
+      <h3><%= url %></h3>
+      <% urls.forEach(function(url) { %>
+        <p><%= url %></p>
+      <% }); %>
+    </div>
   </body>
 </html>

@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 
 let url = "";
-let title = ";"
+let title = ""
 const urls = [];
 
 // Have Express serve static files such as CSS

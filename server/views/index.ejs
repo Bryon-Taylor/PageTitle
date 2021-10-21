@@ -14,8 +14,10 @@
     </form>
     <div>
       <h3><%= url %></h3>
-      <% urls.forEach(function(url) { %>
-        <p><%= url %></p>
+      <h3><%= title %></h3>
+      <% urls.forEach(function(entry) { %>
+        <p><%= entry.url %></p>
+        <p><%= entry.title %></p>
       <% }); %>
     </div>
   </body>

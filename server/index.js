@@ -47,8 +47,6 @@ app.post('/', (req, res) => {
       console.log(error.response);
     }
   })();
-
-
 });
 
 app.listen(PORT, () => {

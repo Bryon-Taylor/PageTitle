@@ -24,9 +24,21 @@
   padding: 20px 0;
 }
 
+.title {
+  display: inline;
+  font-size: 20px;
+}
+
 .title-bar {
   color: #5E454B;
   background-color: #CDBBA7;
   text-align: center;
   padding: 5px 0;
+}
+
+.url {
+  display: inline;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 30px;
 }

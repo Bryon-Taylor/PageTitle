@@ -1,3 +1,32 @@
-.red {
-  color: red;
+.buttn {
+  margin-top: 3px;
+}
+
+.container {
+  padding-top: 40px;
+  width: 80%;
+  background-color: #FDEFEF;
+}
+
+.left-col {
+
+}
+
+.right-col {
+
+}
+
+.history {
+  margin-top: 100px;
+  width: 100%;
+  text-align: center;
+  background-color: #F4DFD0;
+  padding: 20px 0;
+}
+
+.title-bar {
+  color: #5E454B;
+  background-color: #CDBBA7;
+  text-align: center;
+  padding: 5px 0;
 }

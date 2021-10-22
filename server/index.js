@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const got = require('got');
-const request = require('request');
+const https = require('https');
+
 const app = express();
 const PORT = 3000;
 
@@ -23,22 +24,27 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  console.log(req.body.inputUrl);
   url = req.body.inputUrl;
 
   (async () => {
     try {
       const offset = 7; // number of chars in <title>
+      const maxTitleLength = 100;
       const response = await got(url);
-      const sourceCode = response.body;
+
+      let sourceCode = response.body;
       const beginIndex = sourceCode.search(/<title>/) + offset;
-      const endIndex = sourceCode.search(/<\/title>/);
-      title = await sourceCode.substring(beginIndex, endIndex);
-      console.log(title);
+
+      // shorten search string for efficiency
+      let shortSourceCode = sourceCode.substring(beginIndex, (beginIndex + maxTitleLength));
+
+      const endIndex = shortSourceCode.search(/<\/title>/);
+      title = await shortSourceCode.substring(0, endIndex);
+
       urls.push({url: url, title: title});
       res.render('index.ejs', {url: url, title: title, urls: urls});
     } catch (error) {
-      console.log(error.response.body);
+      console.log(error.response);
     }
   })();
 

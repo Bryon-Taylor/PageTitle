@@ -1,38 +1,33 @@
-.buttn {
-  margin-top: 3px;
-}
-
 .container {
   padding-top: 40px;
-  width: 80%;
-  background-color: #FDEFEF;
-}
-
-.left-col {
-
-}
-
-.right-col {
-
+  background-color: #EEF2F5;
+  font-family: "Zen Kaku Gothic New", serif;
 }
 
 .history {
-  margin-top: 100px;
+  margin-top: 50px;
   width: 100%;
   text-align: center;
-  background-color: #F4DFD0;
+  background-color: #E8E8E8;
   padding: 20px 0;
 }
 
 .title {
   display: inline;
-  font-size: 20px;
+  font-size: 15px;
+}
+
+.title-lg {
+  fon-size: 1.5rem;
 }
 
 .title-bar {
-  color: #5E454B;
-  background-color: #CDBBA7;
-  text-align: center;
+  color: #FDEFEF;
+  background-color: #091353;
+  padding: 10px 300px !important;
+  font-size: 30px;
+  font-family: "Montserrat", serif;
+  /* font-weight: bold; */
   padding: 5px 0;
 }
 
@@ -41,4 +36,9 @@
   font-size: 20px;
   font-weight: bold;
   margin-right: 30px;
+}
+
+.url-lg {
+  font-size: 1.5rem;
+  font-weight: bold;
 }

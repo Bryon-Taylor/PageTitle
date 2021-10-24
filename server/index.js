@@ -1,14 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const got = require('got');
-const https = require('https');
 
 const app = express();
 const PORT = 3000;
 
-let url = "";
-let title = ""
-const urls = [];
+let url = ""; // User input URL
+let title = "" // Website title
+const urls = []; // Store website titles and urls
 
 // Have Express serve static files such as CSS
 app.use(express.static('public'));
@@ -26,28 +25,32 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   url = req.body.inputUrl;
 
+  // Try to extract website title
   (async () => {
     try {
-      const offset = 7; // number of chars in <title>
-      const maxTitleLength = 100;
+
+      // Get the source code of website
       const response = await got(url);
+      const sourceCode = response.body;
 
-      let sourceCode = response.body;
-      const beginIndex = sourceCode.search(/<title>/) + offset;
+      // Search source code for title
+      const matchedExpression = sourceCode.match(/<title>(.*)<\/title>/);
 
-      // shorten search string for efficiency
-      let shortSourceCode = sourceCode.substring(beginIndex, (beginIndex + maxTitleLength));
-
-      const endIndex = shortSourceCode.search(/<\/title>/);
-      title = await shortSourceCode.substring(0, endIndex);
-
-      urls.push({url: url, title: title});
-      res.render('index.ejs', {url: url, title: title, urls: urls});
+      // Second element in array is the website title minus the html tags
+      const title = matchedExpression[1];
+      pushAndRender(res, url, title, urls);
     } catch (error) {
-      console.log(error.response);
+        const title = "Cannot access this website's title";
+        pushAndRender(res, url, title, urls);
     }
   })();
 });
+
+// Push results to the array and render on page
+function pushAndRender(res, url, title, urls) {
+  urls.push({url: url, title: title});
+  res.render('index.ejs', {url: url, title: title, urls: urls});
+}
 
 app.listen(PORT, () => {
   console.log("Express server running on port " + PORT);

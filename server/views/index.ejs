@@ -30,11 +30,13 @@
       <div class="row no guttters">
         <div class="history">
           <h3>Your history</h3>
-          <% urls.forEach(function(entry) { %>
-            <h1 class="url"><%= entry.url %></h1>
-            <h1 class="title"><%= entry.title %></h1>
-            <br />
-          <% }); %>
+          <div class="history-container">
+            <% urls.forEach(function(entry) { %>
+              <h1 class="url"><%= entry.url %></h1>
+              <h1 class="title"><%= entry.title %></h1>
+              <br />
+            <% }); %>
+          </div>
         </div>
       </div>
 
